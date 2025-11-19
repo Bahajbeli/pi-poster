@@ -196,27 +196,7 @@ export default function SinglePage() {
             </motion.div>
           </div>
 
-          {/* Component Interactions */}
-          <div>
-            <h3 className="mb-6 text-2xl font-bold text-gray-800">Component Interactions</h3>
-            <div className="flex justify-center">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="rounded-xl overflow-hidden shadow-lg"
-              >
-                <img
-                  src="/image.png"
-                  alt="Component Interactions"
-                  className="w-full h-auto max-w-full"
-                  onError={() => {
-                    console.error('Failed to load image: /image.png')
-                  }}
-                />
-              </motion.div>
-            </div>
-          </div>
+          
         </section>
 
         {/* 3. Physical Architecture */}
@@ -517,6 +497,34 @@ export default function SinglePage() {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Global Architecture */}
+        <section className="mb-16 rounded-2xl bg-white p-8 shadow-xl">
+          <div className="mb-8 flex flex-wrap items-center gap-4">
+            <div className="rounded-xl bg-sky-600 p-3 text-white shadow-lg">
+              <MonitorDot className="h-8 w-8" />
+            </div>
+            <h2 className="text-3xl font-bold text-gray-800">Global Architecture</h2>
+          </div>
+
+          <div className="flex justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="rounded-xl overflow-hidden shadow-lg"
+            >
+              <img
+                src="/arci.jpg"
+                alt="Global Architecture"
+                className="w-full h-auto max-w-full"
+                onError={() => {
+                  console.error('Failed to load image: /arci.jpg')
+                }}
+              />
+            </motion.div>
           </div>
         </section>
 

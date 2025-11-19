@@ -123,7 +123,7 @@ const allRequirementsData: RequirementData[] = [
     id: 'Req 5',
     title: 'Automation Tool',
     description:
-      'Automate provisioning, configuration management, and application deployment across the infrastructure',
+      'Configuration management, and application deployment across the infrastructure',
     technicalConstraints: [
       { id: 'TC5.1', description: 'Must be open-source' },
       { id: 'TC5.2', description: 'Must provide provisioning and configuration management' },

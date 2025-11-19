@@ -53,7 +53,7 @@ const gameConfigurations = [
   },
   {
     id: 2,
-    title: 'Compatibility & Performance',
+    title: '',
     players: ['KVM', 'Xen', 'VMware ESXi'],
     stages: [
       'TC2.1 - OpenStack compatibility',
@@ -65,7 +65,7 @@ const gameConfigurations = [
   },
   {
     id: 3,
-    title: 'Infrastructure as Code',
+    title: '',
     players: ['OpenStack Heat', 'Terraform', 'Pulumi'],
     stages: [
       'TC3.1 - Open-source',
@@ -79,7 +79,7 @@ const gameConfigurations = [
   },
   {
     id: 4,
-    title: 'Cloud Efficiencies',
+    title: '',
     players: ['Docker', 'Podman', 'containerd'],
     stages: [
       'TC4.1 - Resource optimization',
@@ -91,7 +91,7 @@ const gameConfigurations = [
   },
   {
     id: 5,
-    title: 'Advanced Deployment',
+    title: '',
     players: ['Kubernetes', 'Docker Swarm', 'Apache Mesos'],
     stages: [
       'TC4.6 - Debian/Ubuntu support',
@@ -106,7 +106,7 @@ const gameConfigurations = [
   },
   {
     id: 6,
-    title: 'Full Automation',
+    title: '',
     players: ['Ansible', 'Puppet', 'Chef'],
     stages: [
       'TC5.1 - Open-source',
@@ -119,7 +119,7 @@ const gameConfigurations = [
   },
   {
     id: 7,
-    title: 'Intelligent Monitoring',
+    title: '',
     players: ['Prometheus + Grafana', 'ELK Stack', 'Zabbix'],
     stages: [
       'Req 6 - Monitoring',
