@@ -186,7 +186,7 @@ export default function SinglePage() {
               transition={{ duration: 0.5 }}
             >
               <InteractiveImage
-                imageSrc="/Capture.jpeg"
+                imageSrc="/arc.jpg"
                 hotspots={architectureHotspots}
                 selectedComponent={selectedComponent}
                 onComponentSelect={setSelectedComponent}
