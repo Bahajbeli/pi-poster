@@ -83,13 +83,13 @@ export default function InteractiveImage({
           className="px-4 py-2 bg-indigo-600 text-white hover:bg-indigo-700 rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
         >
           <Edit2 className="h-4 w-4" />
-          Éditer les Hotspots
+          Edit Hotspots
         </button>
         <button
           onClick={() => setDebugMode(!debugMode)}
           className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg text-sm font-medium transition-colors"
         >
-          {debugMode ? 'Désactiver Debug' : 'Activer Debug'}
+          {debugMode ? 'Disable Debug' : 'Enable Debug'}
         </button>
       </div>
 
@@ -394,7 +394,7 @@ export default function InteractiveImage({
                   >
                     <div className="flex items-center gap-2 text-sm text-gray-500">
                       <div className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></div>
-                      <span>Composant actif</span>
+                      <span>Active component</span>
                     </div>
                     <motion.button
                       whileHover={{ scale: 1.05 }}
@@ -402,7 +402,7 @@ export default function InteractiveImage({
                       onClick={closeModal}
                       className="px-6 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg font-semibold hover:shadow-lg transition-shadow"
                     >
-                      Fermer
+                      Close
                     </motion.button>
                   </motion.div>
                 </motion.div>

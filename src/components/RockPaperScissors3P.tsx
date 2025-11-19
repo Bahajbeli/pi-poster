@@ -53,7 +53,7 @@ const gameConfigurations = [
   },
   {
     id: 2,
-    title: 'Compatibilité & Performance',
+    title: 'Compatibility & Performance',
     players: ['KVM', 'Xen', 'VMware ESXi'],
     stages: [
       'TC2.1 - OpenStack compatibility',
@@ -66,7 +66,7 @@ const gameConfigurations = [
   {
     id: 3,
     title: 'Infrastructure as Code',
-    players: ['OpenStack Heat', 'Terraform', 'Plumi'],
+    players: ['OpenStack Heat', 'Terraform', 'Pulumi'],
     stages: [
       'TC3.1 - Open-source',
       'TC3.2 - Infrastructure integration',
@@ -79,7 +79,7 @@ const gameConfigurations = [
   },
   {
     id: 4,
-    title: 'Efficiences Cloud',
+    title: 'Cloud Efficiencies',
     players: ['Docker', 'Podman', 'containerd'],
     stages: [
       'TC4.1 - Resource optimization',
@@ -91,7 +91,7 @@ const gameConfigurations = [
   },
   {
     id: 5,
-    title: 'Déploiement avancé',
+    title: 'Advanced Deployment',
     players: ['Kubernetes', 'Docker Swarm', 'Apache Mesos'],
     stages: [
       'TC4.6 - Debian/Ubuntu support',
@@ -106,7 +106,7 @@ const gameConfigurations = [
   },
   {
     id: 6,
-    title: 'Automatisation complète',
+    title: 'Full Automation',
     players: ['Ansible', 'Puppet', 'Chef'],
     stages: [
       'TC5.1 - Open-source',
@@ -119,7 +119,7 @@ const gameConfigurations = [
   },
   {
     id: 7,
-    title: 'Surveillance intelligente',
+    title: 'Intelligent Monitoring',
     players: ['Prometheus + Grafana', 'ELK Stack', 'Zabbix'],
     stages: [
       'Req 6 - Monitoring',
@@ -491,7 +491,7 @@ export default function RockPaperScissors3P(props: RockPaperScissors3PProps = {}
             {currentGame.title}
           </h2>
           <p className="text-lg text-gray-500 mb-4">
-            Jeu {currentGameIndex + 1} / {totalGames}
+            Game {currentGameIndex + 1} / {totalGames}
           </p>
           <div className="flex justify-center gap-4 mb-6">
             {automatedChoices[currentGameIndex + 1] && (
@@ -507,7 +507,7 @@ export default function RockPaperScissors3P(props: RockPaperScissors3PProps = {}
                 } ${gameStatus === 'playing' && !isAutoPlaying ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 <Play className={`h-4 w-4 ${isAutoPlaying ? 'hidden' : ''}`} />
-                {isAutoPlaying ? 'Arrêter l\'automatisation' : 'Jouer automatiquement'}
+                {isAutoPlaying ? 'Stop automation' : 'Auto play'}
               </motion.button>
             )}
             <button
@@ -519,7 +519,7 @@ export default function RockPaperScissors3P(props: RockPaperScissors3PProps = {}
                   : 'bg-indigo-600 hover:bg-indigo-500'
               }`}
             >
-              Jeu suivant
+              Next game
             </button>
           </div>
         <motion.div
@@ -531,7 +531,7 @@ export default function RockPaperScissors3P(props: RockPaperScissors3PProps = {}
           <p className="text-2xl font-semibold text-indigo-600 mb-1">
             {currentGame.stages[round - 1]}
           </p>
-          <p className="text-gray-600">Manche {round} / {maxRounds}</p>
+          <p className="text-gray-600">Round {round} / {maxRounds}</p>
         </motion.div>
       </div>
 
@@ -573,7 +573,7 @@ export default function RockPaperScissors3P(props: RockPaperScissors3PProps = {}
             onClick={startRound}
             className="px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-bold text-lg hover:shadow-xl transition-all transform hover:scale-105"
           >
-            Commencer la Manche
+            Start Round
           </button>
         </motion.div>
       )}
@@ -586,7 +586,7 @@ export default function RockPaperScissors3P(props: RockPaperScissors3PProps = {}
         >
           <div className="text-center mb-6">
             <p className="text-xl font-semibold text-gray-700 mb-2">
-              {players.find((p) => p.id === currentPlayer)?.name} choisit :
+              {players.find((p) => p.id === currentPlayer)?.name} is choosing:
             </p>
             <motion.div
               animate={{
@@ -640,18 +640,18 @@ export default function RockPaperScissors3P(props: RockPaperScissors3PProps = {}
                   🎉
                 </motion.div>
                 <h3 className="text-2xl font-bold text-gray-800 mb-2">
-                  Manche terminée !
+                  Round finished!
                 </h3>
                 <p className="text-lg text-gray-600 mb-4">
-                  Points attribués selon les choix : Yes = 1pt, No = 0pt, Partial = 0.5pt
+                  Points awarded for choices: Yes = 1pt, No = 0pt, Partial = 0.5pt
                 </p>
                 {winners.length > 0 && (
                   <p className="text-lg font-semibold text-indigo-600">
                     {winners.length === 1
-                      ? `${players.find((p) => p.id === winners[0])?.name} mène avec ${players.find((p) => p.id === winners[0])?.score.toFixed(1)} point(s) !`
+                      ? `${players.find((p) => p.id === winners[0])?.name} leads with ${players.find((p) => p.id === winners[0])?.score.toFixed(1)} point(s)!`
                       : winners.length === 2
-                        ? `${players.find((p) => p.id === winners[0])?.name} et ${players.find((p) => p.id === winners[1])?.name} sont à égalité avec ${players.find((p) => p.id === winners[0])?.score.toFixed(1)} point(s) !`
-                        : 'Match serré !'}
+                        ? `${players.find((p) => p.id === winners[0])?.name} and ${players.find((p) => p.id === winners[1])?.name} are tied at ${players.find((p) => p.id === winners[0])?.score.toFixed(1)} point(s)!`
+                        : 'Close match!'}
                   </p>
                 )}
               </>
@@ -664,7 +664,7 @@ export default function RockPaperScissors3P(props: RockPaperScissors3PProps = {}
                 >
                   🤝
                 </motion.div>
-                <h3 className="text-2xl font-bold text-gray-800 mb-2">Égalité !</h3>
+                <h3 className="text-2xl font-bold text-gray-800 mb-2">Tie!</h3>
               </>
             )}
           </div>
@@ -678,7 +678,7 @@ export default function RockPaperScissors3P(props: RockPaperScissors3PProps = {}
                 className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all flex items-center gap-2"
               >
                 <RotateCcw className="h-5 w-5" />
-                Manche Suivante
+                Next Round
               </motion.button>
             ) : null}
             <motion.button
@@ -688,7 +688,7 @@ export default function RockPaperScissors3P(props: RockPaperScissors3PProps = {}
               className="px-6 py-3 bg-gray-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all flex items-center gap-2"
             >
               <RotateCcw className="h-5 w-5" />
-              Nouveau Jeu
+              New Game
             </motion.button>
           </div>
         </motion.div>
@@ -716,17 +716,17 @@ export default function RockPaperScissors3P(props: RockPaperScissors3PProps = {}
                 <>
                   <h3 className="text-3xl font-bold text-gray-800 mb-2">
                     {isTie
-                      ? `Égalité entre ${finalWinners.map((w: Player) => w.name).join(' et ')} !`
-                      : `${finalWinners[0].name} remporte la victoire !`}
+                      ? `Tie between ${finalWinners.map((w: Player) => w.name).join(' and ')}!`
+                      : `${finalWinners[0].name} wins!`}
                   </h3>
                   <p className="text-lg text-gray-600 mb-4">
-                    Après {maxRounds} manches, {isTie ? 'les joueurs sont à égalité' : 'le gagnant est déterminé'}
+                    After {maxRounds} rounds, {isTie ? 'players are tied' : 'the winner is determined'}
                   </p>
                 </>
               )
             })()}
             <div className="bg-white rounded-xl p-4 shadow-md inline-block min-w-[300px]">
-              <p className="text-2xl font-bold text-indigo-600 mb-3">Score Final</p>
+              <p className="text-2xl font-bold text-indigo-600 mb-3">Final Score</p>
               <div className="space-y-2">
                 {[...players]
                   .sort((a, b) => b.score - a.score)
@@ -768,7 +768,7 @@ export default function RockPaperScissors3P(props: RockPaperScissors3PProps = {}
               className="px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg font-bold text-lg hover:shadow-lg transition-all flex items-center gap-2"
             >
               <RotateCcw className="h-6 w-6" />
-              Nouveau Jeu
+              New Game
             </motion.button>
             {currentGameIndex < totalGames - 1 && (
               <motion.button
@@ -777,7 +777,7 @@ export default function RockPaperScissors3P(props: RockPaperScissors3PProps = {}
                 onClick={goToNextGame}
                 className="px-8 py-4 bg-indigo-100 text-indigo-700 rounded-lg font-bold text-lg hover:shadow-lg transition-all"
               >
-                Passer au jeu suivant
+                Skip to next game
               </motion.button>
             )}
           </div>
@@ -794,8 +794,8 @@ export default function RockPaperScissors3P(props: RockPaperScissors3PProps = {}
           <Trophy className="h-8 w-8 mx-auto mb-2" />
           <p className="font-bold">
             {getOverallWinner().length === 1
-              ? `${getOverallWinner()[0].name} mène avec ${getOverallWinner()[0].score} point(s) !`
-              : 'Match serré !'}
+              ? `${getOverallWinner()[0].name} leads with ${getOverallWinner()[0].score} point(s)!`
+              : 'Close match!'}
           </p>
         </motion.div>
       )}

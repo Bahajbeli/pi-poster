@@ -42,8 +42,8 @@ export default function ImageEditor({
       y: 10,
       width: 15,
       height: 10,
-      title: 'Nouveau Composant',
-      description: 'Description du composant',
+      title: 'New Component',
+      description: 'Component description',
       layer: 'Infrastructure Layer',
     }
     setLocalHotspots([...localHotspots, newHotspot])
@@ -115,7 +115,7 @@ export default function ImageEditor({
         <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 rounded-t-2xl flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Edit2 className="h-6 w-6" />
-            <h2 className="text-2xl font-bold">Éditeur de Hotspots</h2>
+            <h2 className="text-2xl font-bold">Hotspots Editor</h2>
           </div>
           <button
             onClick={onClose}
@@ -161,7 +161,7 @@ export default function ImageEditor({
                 className="w-full bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2"
               >
                 <Plus className="h-5 w-5" />
-                Ajouter un Hotspot
+                Add Hotspot
               </button>
               <div className="grid grid-cols-2 gap-2">
                 <button
@@ -169,14 +169,14 @@ export default function ImageEditor({
                   className="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center gap-2 text-sm"
                 >
                   <Download className="h-4 w-4" />
-                  Exporter
+                  Export
                 </button>
                 <button
                   onClick={handleImport}
                   className="bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 text-sm"
                 >
                   <Upload className="h-4 w-4" />
-                  Importer
+                  Import
                 </button>
               </div>
             </div>
@@ -185,11 +185,11 @@ export default function ImageEditor({
             <div className="flex-1 overflow-y-auto p-4">
               {selectedHotspot ? (
                 <div className="space-y-4">
-                  <h3 className="font-bold text-lg text-gray-800">Propriétés du Hotspot</h3>
+                  <h3 className="font-bold text-lg text-gray-800">Hotspot Properties</h3>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Titre
+                      Title
                     </label>
                     <input
                       type="text"
@@ -216,7 +216,7 @@ export default function ImageEditor({
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Couche</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Layer</label>
                     <select
                       value={selectedHotspot.layer}
                       onChange={(e) =>
@@ -267,7 +267,7 @@ export default function ImageEditor({
                   <div className="grid grid-cols-2 gap-2">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Largeur (%)
+                        Width (%)
                       </label>
                       <input
                         type="number"
@@ -284,7 +284,7 @@ export default function ImageEditor({
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Hauteur (%)
+                        Height (%)
                       </label>
                       <input
                         type="number"
@@ -304,7 +304,7 @@ export default function ImageEditor({
               ) : (
                 <div className="text-center text-gray-500 mt-8">
                   <Eye className="h-12 w-12 mx-auto mb-2 opacity-50" />
-                  <p>Sélectionnez un hotspot pour l'éditer</p>
+                  <p>Select a hotspot to edit</p>
                 </div>
               )}
             </div>
@@ -316,7 +316,7 @@ export default function ImageEditor({
                 className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-3 rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all flex items-center justify-center gap-2 font-semibold shadow-lg"
               >
                 <Save className="h-5 w-5" />
-                Sauvegarder les Modifications
+                Save Changes
               </button>
             </div>
           </div>

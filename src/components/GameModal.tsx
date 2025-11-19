@@ -61,8 +61,8 @@ export default function GameModal({ isOpen, onClose }: GameModalProps) {
                       <Gamepad2 className="h-8 w-8" />
                     </motion.div>
                     <div>
-                      <h3 className="text-3xl font-bold mb-1">Zone de Jeux</h3>
-                      <p className="text-purple-100">Amusez-vous avec nos jeux interactifs</p>
+                      <h3 className="text-3xl font-bold mb-1">Game Zone</h3>
+                      <p className="text-purple-100">Enjoy our interactive games</p>
                     </div>
                   </div>
                   <motion.button

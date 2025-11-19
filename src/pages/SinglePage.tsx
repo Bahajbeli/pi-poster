@@ -12,6 +12,7 @@ import InteractiveImage from '../components/InteractiveImage'
 import GameModal from '../components/GameModal'
 import RequirementsTableModal from '../components/RequirementsTableModal'
 import UserProfileModal from '../components/UserProfileModal'
+import ThankYouModal from '../components/ThankYouModal'
 import {
   projectObjective,
 } from '../data/infrastructureData'
@@ -41,7 +42,7 @@ const physicalComponentProfiles: Record<
   'Controller Node': { image: '/elyes.jpg', userName: 'Elyes Msehli' },
   'Block Storage': { image: '/farah.jpg', userName: 'Farah Chabene' },
   'Object Storage': { image: '/thinkpad.jpg', userName: 'Aziz Mejri' },
-  'Compute Node 1': { image: '/dorra.jpg', userName: 'Dorra Beday' },
+  'Compute Node 1': { image: '/dorra.jpg', userName: 'Dorra Bday' },
   'Compute Node 2': { image: '/msi.jpg', userName: 'Zeineb Kharrat' },
   'Compute Node 3': { image: '/dell g15.jpg', userName: 'Salim Lafi' },
   'Compute Node 4': { image: '/dell g15.jpg', userName: 'Bahaeddine Jbeli' },
@@ -52,6 +53,7 @@ export default function SinglePage() {
   const [isGameModalOpen, setIsGameModalOpen] = useState(false)
   const [isRequirementsModalOpen, setIsRequirementsModalOpen] = useState(false)
   const [selectedPhysicalComponent, setSelectedPhysicalComponent] = useState<string | null>(null)
+  const [isThankYouOpen, setIsThankYouOpen] = useState(false)
 
   useEffect(() => {
     // Scroll to top on mount
@@ -527,6 +529,12 @@ export default function SinglePage() {
           <p className="text-xs text-gray-400">
             Complete infrastructure automation from bare metal to containerized applications
           </p>
+          <button
+            onClick={() => setIsThankYouOpen(true)}
+            className="mt-6 mx-auto block rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-3 font-semibold text-white shadow hover:shadow-lg border border-white/20"
+          >
+            Thank you
+          </button>
         </footer>
       </div>
 
@@ -538,6 +546,9 @@ export default function SinglePage() {
         isOpen={isRequirementsModalOpen}
         onClose={() => setIsRequirementsModalOpen(false)}
       />
+
+      {/* Thank You Modal */}
+      <ThankYouModal isOpen={isThankYouOpen} onClose={() => setIsThankYouOpen(false)} />
 
       {/* User Profile Modal for Physical Architecture */}
       {selectedPhysicalComponent && physicalComponentProfiles[selectedPhysicalComponent] && (

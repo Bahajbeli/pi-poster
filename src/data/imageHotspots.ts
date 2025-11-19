@@ -20,7 +20,7 @@ export const architectureHotspots: Hotspot[] = [
     height: 10,
     title: 'Prometheus + Grafana',
     description:
-      'Système de monitoring et de visualisation des métriques. Prometheus collecte les données de performance et Grafana fournit des tableaux de bord interactifs pour visualiser l\'état de l\'infrastructure en temps réel.',
+      "Metrics monitoring and visualization stack. Prometheus collects performance data and Grafana provides interactive dashboards to visualize infrastructure health in real time.",
     layer: 'Management & Monitoring Layer',
   },
   {
@@ -31,7 +31,7 @@ export const architectureHotspots: Hotspot[] = [
     height: 10,
     title: 'Ansible',
     description:
-      'Outil d\'automatisation de configuration qui permet de gérer et déployer des configurations sur plusieurs serveurs de manière idempotente. Utilisé pour la configuration automatique de tous les composants de l\'infrastructure.',
+      "Configuration automation tool used to manage and deploy configurations across multiple servers idempotently. Used to automatically configure all infrastructure components.",
     layer: 'Management & Monitoring Layer',
   },
   {
@@ -42,7 +42,7 @@ export const architectureHotspots: Hotspot[] = [
     height: 10,
     title: 'OpenStack Horizon',
     description:
-      'Interface web d\'administration pour OpenStack. Permet aux utilisateurs de gérer leurs ressources cloud via une interface graphique intuitive, incluant la création de VMs, réseaux et volumes.',
+      "Web administration interface for OpenStack. Lets users manage cloud resources through an intuitive UI, including creating VMs, networks, and volumes.",
     layer: 'Management & Monitoring Layer',
   },
   {
@@ -53,7 +53,7 @@ export const architectureHotspots: Hotspot[] = [
     height: 12,
     title: 'OpenStack Heat',
     description:
-      'Service d\'orchestration d\'infrastructure qui permet de définir et déployer des infrastructures complexes via des templates. Supporte l\'Infrastructure as Code (IaC) pour automatiser le déploiement.',
+      "Infrastructure orchestration service to define and deploy complex infrastructure via templates. Supports Infrastructure as Code (IaC) to automate deployments.",
     layer: 'Orchestration Layer',
   },
   {
@@ -64,7 +64,7 @@ export const architectureHotspots: Hotspot[] = [
     height: 12,
     title: 'Kubernetes',
     description:
-      'Plateforme d\'orchestration de conteneurs qui automatise le déploiement, la mise à l\'échelle et la gestion des applications conteneurisées. Gère le cycle de vie complet des conteneurs.',
+      "Container orchestration platform that automates deployment, scaling, and management of containerized applications. Manages the full lifecycle of containers.",
     layer: 'Orchestration Layer',
   },
   {
@@ -75,7 +75,7 @@ export const architectureHotspots: Hotspot[] = [
     height: 12,
     title: 'Docker',
     description:
-      'Plateforme de conteneurisation qui permet d\'empaqueter des applications et leurs dépendances dans des conteneurs légers et portables. Utilisé comme runtime de conteneurs dans l\'infrastructure.',
+      "Containerization platform that packages applications and dependencies into lightweight, portable containers. Used as the container runtime in the infrastructure.",
     layer: 'Application & Container Layer',
   },
   {
@@ -86,7 +86,7 @@ export const architectureHotspots: Hotspot[] = [
     height: 12,
     title: 'Nova',
     description:
-      'Service de calcul d\'OpenStack responsable de la gestion du cycle de vie des instances de machines virtuelles. Gère la création, la suppression et la migration des VMs sur les hyperviseurs.',
+      "OpenStack compute service responsible for the lifecycle of virtual machine instances. Manages creation, deletion, and migration of VMs across hypervisors.",
     layer: 'Application & Container Layer',
   },
   {
@@ -97,7 +97,7 @@ export const architectureHotspots: Hotspot[] = [
     height: 12,
     title: 'Neutron',
     description:
-      'Service de mise en réseau d\'OpenStack qui fournit une connectivité réseau pour les instances. Gère les réseaux, sous-réseaux, routeurs et règles de sécurité (firewall) de manière programmatique.',
+      "OpenStack networking service providing network connectivity for instances. Programmatically manages networks, subnets, routers, and security rules (firewall).",
     layer: 'Application & Container Layer',
   },
   {
@@ -108,7 +108,7 @@ export const architectureHotspots: Hotspot[] = [
     height: 12,
     title: 'KVM',
     description:
-      'Hyperviseur de virtualisation open-source intégré au noyau Linux. Permet d\'exécuter plusieurs machines virtuelles isolées sur un même serveur physique avec des performances proches du natif.',
+      "Open-source virtualization hypervisor built into the Linux kernel. Runs multiple isolated virtual machines on a single physical server with near-native performance.",
     layer: 'Infrastructure Layer',
   },
   {
@@ -119,7 +119,7 @@ export const architectureHotspots: Hotspot[] = [
     height: 12,
     title: 'Cinder / Swift',
     description:
-      'Cinder fournit du stockage bloc persistant pour les instances, tandis que Swift offre du stockage objet distribué et redondant. Ensemble, ils fournissent des solutions de stockage scalables pour l\'infrastructure.',
+      "Cinder provides persistent block storage for instances, while Swift offers distributed, redundant object storage. Together they deliver scalable storage for the infrastructure.",
     layer: 'Infrastructure Layer',
   },
   {
@@ -130,7 +130,7 @@ export const architectureHotspots: Hotspot[] = [
     height: 12,
     title: 'OpenStack Core',
     description:
-      'Plateforme IaaS open-source complète qui orchestre les ressources de calcul, réseau et stockage. Fournit des APIs pour gérer l\'infrastructure cloud de manière programmatique et standardisée.',
+      "Complete open-source IaaS platform orchestrating compute, network, and storage resources. Provides APIs to programmatically manage cloud infrastructure in a standardized way.",
     layer: 'Infrastructure Layer',
   },
   {
@@ -141,7 +141,7 @@ export const architectureHotspots: Hotspot[] = [
     height: 15,
     title: 'Hardware Infrastructure',
     description:
-      'Ressources physiques de l\'infrastructure incluant les serveurs, stockage, et équipements réseau. Base matérielle sur laquelle s\'exécutent tous les services virtualisés et conteneurisés.',
+      "Physical resources of the infrastructure including servers, storage, and networking equipment. The hardware foundation on which all virtualized and containerized services run.",
     layer: 'Infrastructure Layer',
   },
 ]
