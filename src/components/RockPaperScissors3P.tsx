@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Hand, Trophy, RotateCcw, Play } from 'lucide-react'
 import WinnerModal from './WinnerModal'
 
@@ -226,7 +226,6 @@ export default function RockPaperScissors3P(props: RockPaperScissors3PProps = {}
   const [isAutoPlaying, setIsAutoPlaying] = useState(false)
   const [showWinnerModal, setShowWinnerModal] = useState(false)
   const [winnerModalDismissed, setWinnerModalDismissed] = useState(false)
-  const [showDocModal, setShowDocModal] = useState(false)
   const scoredRoundRef = useRef<number | null>(null)
   const autoPlayTimeoutRef = useRef<number | null>(null)
   const isAutoPlayingRef = useRef(false)
@@ -521,14 +520,6 @@ export default function RockPaperScissors3P(props: RockPaperScissors3PProps = {}
               }`}
             >
               Jeu suivant
-            </button>
-            <button
-              type="button"
-              onClick={() => setShowDocModal(true)}
-              className="px-6 py-2 rounded-full font-semibold transition bg-white border border-gray-200 text-gray-700 hover:shadow-md hover:border-indigo-300"
-              title="Afficher le cadre professionnel"
-            >
-              Cadre Professionnel
             </button>
           </div>
         <motion.div
@@ -831,53 +822,6 @@ export default function RockPaperScissors3P(props: RockPaperScissors3PProps = {}
           />
         )
       })()}
-
-      {/* Modal Image - Cadre Professionnel */}
-      <AnimatePresence>
-        {showDocModal && (
-          <div className="fixed inset-0 z-[120]">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/70 backdrop-blur-sm"
-              onClick={() => setShowDocModal(false)}
-            />
-            <div className="fixed inset-0 flex items-center justify-center p-4 pointer-events-none">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                transition={{ type: 'spring', damping: 24, stiffness: 260 }}
-                className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full overflow-hidden border border-gray-200 pointer-events-auto"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div className="flex items-center justify-between px-5 py-3 border-b">
-                  <h4 className="text-lg font-semibold text-gray-800">Cadre Professionnel</h4>
-                  <button
-                    type="button"
-                    onClick={() => setShowDocModal(false)}
-                    className="px-2 py-1 rounded-md hover:bg-gray-100"
-                    aria-label="Fermer"
-                  >
-                    ✕
-                  </button>
-                </div>
-                <div className="bg-gray-50 p-4">
-                  <div className="rounded-xl overflow-hidden border bg-white">
-                    <img
-                      src="/dok.png"
-                      alt="Dok image"
-                      className="w-full h-auto object-contain"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        )}
-      </AnimatePresence>
     </div>
   )
 }

@@ -29,3 +29,5 @@ dist-ssr
 !.edgeone/project.json
 .tef_dist/*
   
+# Local Netlify folder
+.netlify

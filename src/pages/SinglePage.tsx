@@ -1,11 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import {
   Cloud,
   Layers,
   Server,
   HardDrive,
-  Network,
   MonitorDot,
   FileText,
 } from 'lucide-react'
@@ -15,7 +14,6 @@ import RequirementsTableModal from '../components/RequirementsTableModal'
 import UserProfileModal from '../components/UserProfileModal'
 import {
   projectObjective,
-  logicalArchitecture,
 } from '../data/infrastructureData'
 import { architectureHotspots } from '../data/imageHotspots'
 
@@ -54,35 +52,11 @@ export default function SinglePage() {
   const [isGameModalOpen, setIsGameModalOpen] = useState(false)
   const [isRequirementsModalOpen, setIsRequirementsModalOpen] = useState(false)
   const [selectedPhysicalComponent, setSelectedPhysicalComponent] = useState<string | null>(null)
-  const [showDocImage, setShowDocImage] = useState(false)
-  const [hotspotEditMode, setHotspotEditMode] = useState(false)
-  const containerRef = useRef<HTMLDivElement | null>(null)
-  const [docHotspot, setDocHotspot] = useState({ top: 66.5784, left: 54.9688, width: 8.01736, height: 13.5048 })
-  const dragState = useRef<{ action: 'move' | 'resize' | null; startX: number; startY: number; origin: { top: number; left: number; width: number; height: number } }>(
-    { action: null, startX: 0, startY: 0, origin: { top: 66.5784, left: 54.9688, width: 8.01736, height: 13.5048 } }
-  )
 
   useEffect(() => {
     // Scroll to top on mount
     window.scrollTo(0, 0)
   }, [])
-
-  // Load/save hotspot from localStorage
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem('doc-hotspot')
-      if (saved) {
-        const parsed = JSON.parse(saved)
-        if (parsed && typeof parsed.top === 'number') setDocHotspot(parsed)
-      }
-    } catch {}
-  }, [])
-
-  useEffect(() => {
-    try {
-      localStorage.setItem('doc-hotspot', JSON.stringify(docHotspot))
-    } catch {}
-  }, [docHotspot])
 
   const handleComponentClick = (componentTitle: string) => {
     const hotspotId = componentToHotspotMap[componentTitle]
@@ -212,7 +186,7 @@ export default function SinglePage() {
               transition={{ duration: 0.5 }}
             >
               <InteractiveImage
-                imageSrc="/arc.jpg"
+                imageSrc="/Capture.jpeg"
                 hotspots={architectureHotspots}
                 selectedComponent={selectedComponent}
                 onComponentSelect={setSelectedComponent}
@@ -228,163 +202,16 @@ export default function SinglePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="rounded-xl overflow-hidden shadow-lg relative"
+                className="rounded-xl overflow-hidden shadow-lg"
               >
-                {/* Toolbar for hotspot editing */}
-                <div className="absolute left-2 top-2 z-10 flex gap-2 items-center bg-white/80 backdrop-blur px-2 py-1 rounded-md shadow">
-                  <button
-                    type="button"
-                    onClick={() => setHotspotEditMode((v) => !v)}
-                    className={`px-3 py-1 text-xs rounded-md ${hotspotEditMode ? 'bg-indigo-600 text-white' : 'bg-white text-gray-700 border'}`}
-                  >
-                    {hotspotEditMode ? 'Terminer le placement' : 'Positionner le cadre'}
-                  </button>
-                  {hotspotEditMode && (
-                    <>
-                      <div className="flex items-center gap-1 text-[10px]">
-                        <label>T</label>
-                        <input
-                          type="number"
-                          step="0.1"
-                          value={Number(docHotspot.top.toFixed(1))}
-                          onChange={(e) => {
-                            const v = Math.min(100, Math.max(0, Number(e.target.value)))
-                            setDocHotspot((h) => ({ ...h, top: v }))
-                          }}
-                          className="w-14 px-1 py-0.5 border rounded"
-                        />
-                        <label>L</label>
-                        <input
-                          type="number"
-                          step="0.1"
-                          value={Number(docHotspot.left.toFixed(1))}
-                          onChange={(e) => {
-                            const v = Math.min(100, Math.max(0, Number(e.target.value)))
-                            setDocHotspot((h) => ({ ...h, left: v }))
-                          }}
-                          className="w-14 px-1 py-0.5 border rounded"
-                        />
-                        <label>W</label>
-                        <input
-                          type="number"
-                          step="0.1"
-                          value={Number(docHotspot.width.toFixed(1))}
-                          onChange={(e) => {
-                            const v = Math.min(100, Math.max(1, Number(e.target.value)))
-                            setDocHotspot((h) => ({ ...h, width: v }))
-                          }}
-                          className="w-14 px-1 py-0.5 border rounded"
-                        />
-                        <label>H</label>
-                        <input
-                          type="number"
-                          step="0.1"
-                          value={Number(docHotspot.height.toFixed(1))}
-                          onChange={(e) => {
-                            const v = Math.min(100, Math.max(1, Number(e.target.value)))
-                            setDocHotspot((h) => ({ ...h, height: v }))
-                          }}
-                          className="w-14 px-1 py-0.5 border rounded"
-                        />
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => setDocHotspot({ top: 66.5784, left: 54.9688, width: 8.01736, height: 13.5048 })}
-                        className="px-3 py-1 text-xs rounded-md bg-white text-gray-700 border"
-                      >
-                        Réinitialiser
-                      </button>
-                    </>
-                  )}
-                </div>
                 <img
                   src="/image.png"
                   alt="Component Interactions"
-                  className="w-full h-auto max-w-full select-none"
-                  onError={(e) => {
+                  className="w-full h-auto max-w-full"
+                  onError={() => {
                     console.error('Failed to load image: /image.png')
                   }}
-                  ref={containerRef as any}
                 />
-
-                {/* Hotspot: Cadre Professionnel (contour du PC noir: écran + pied) */}
-                <button
-                  type="button"
-                  onClick={() => setShowDocImage(true)}
-                  className={`absolute ${hotspotEditMode ? 'border-2 border-orange-500/90 bg-orange-100/10' : 'border-2 border-transparent hover:border-orange-500/90 bg-transparent hover:bg-white/10'} rounded-2xl transition shadow-md`}
-                  style={{
-                    top: `${docHotspot.top}%`,
-                    left: `${docHotspot.left}%`,
-                    transform: 'translate(-50%, -50%)',
-                    width: `${docHotspot.width}%`,
-                    height: `${docHotspot.height}%`,
-                    cursor: hotspotEditMode ? 'move' : 'pointer',
-                  }}
-                  title="Cadre Professionnel"
-                  aria-label="Cadre Professionnel"
-                  onMouseDown={(e) => {
-                    if (!hotspotEditMode) return
-                    e.preventDefault()
-                    dragState.current = {
-                      action: 'move',
-                      startX: e.clientX,
-                      startY: e.clientY,
-                      origin: { ...docHotspot },
-                    }
-                    const onMove = (ev: MouseEvent) => {
-                      const container = containerRef.current?.getBoundingClientRect()
-                      if (!container) return
-                      const dx = ((ev.clientX - dragState.current.startX) / container.width) * 100
-                      const dy = ((ev.clientY - dragState.current.startY) / container.height) * 100
-                      setDocHotspot((h) => ({ ...h, left: dragState.current.origin.left + dx, top: dragState.current.origin.top + dy }))
-                    }
-                    const onUp = () => {
-                      window.removeEventListener('mousemove', onMove)
-                      window.removeEventListener('mouseup', onUp)
-                      dragState.current.action = null
-                    }
-                    window.addEventListener('mousemove', onMove)
-                    window.addEventListener('mouseup', onUp)
-                  }}
-                />
-
-                {hotspotEditMode && (
-                  <div
-                    className="absolute w-3 h-3 bg-orange-500 rounded-sm cursor-nwse-resize"
-                    style={{
-                      top: `calc(${docHotspot.top}% + ${docHotspot.height / 2}% - 6px)`,
-                      left: `calc(${docHotspot.left}% + ${docHotspot.width / 2}% - 6px)`,
-                      transform: 'translate(-50%, -50%)',
-                    }}
-                    onMouseDown={(e) => {
-                      e.preventDefault()
-                      dragState.current = {
-                        action: 'resize',
-                        startX: e.clientX,
-                        startY: e.clientY,
-                        origin: { ...docHotspot },
-                      }
-                      const onMove = (ev: MouseEvent) => {
-                        const container = containerRef.current?.getBoundingClientRect()
-                        if (!container) return
-                        const dx = ((ev.clientX - dragState.current.startX) / container.width) * 100
-                        const dy = ((ev.clientY - dragState.current.startY) / container.height) * 100
-                        setDocHotspot((h) => ({
-                          ...h,
-                          width: Math.max(4, dragState.current.origin.width + dx),
-                          height: Math.max(6, dragState.current.origin.height + dy),
-                        }))
-                      }
-                      const onUp = () => {
-                        window.removeEventListener('mousemove', onMove)
-                        window.removeEventListener('mouseup', onUp)
-                        dragState.current.action = null
-                      }
-                      window.addEventListener('mousemove', onMove)
-                      window.addEventListener('mouseup', onUp)
-                    }}
-                  />
-                )}
               </motion.div>
             </div>
           </div>
@@ -724,52 +551,6 @@ export default function SinglePage() {
           userName={physicalComponentProfiles[selectedPhysicalComponent].userName}
         />
       )}
-
-      {/* Popup image dok.png (Cadre Professionnel) */}
-      <AnimatePresence>
-        {showDocImage && (
-          <div className="fixed inset-0 z-[120]">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/70 backdrop-blur-sm"
-              onClick={() => setShowDocImage(false)}
-            />
-            <div className="fixed inset-0 flex items-center justify-center p-4 pointer-events-none">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                transition={{ type: 'spring', damping: 24, stiffness: 260 }}
-                className="bg-white rounded-2xl shadow-2xl w-full max-w-xl md:max-w-2xl overflow-hidden border border-gray-200 pointer-events-auto"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div className="flex items-center justify-end px-5 py-3 border-b">
-                  <button
-                    type="button"
-                    onClick={() => setShowDocImage(false)}
-                    className="px-2 py-1 rounded-md hover:bg-gray-100"
-                    aria-label="Fermer"
-                  >
-                    ✕
-                  </button>
-                </div>
-                <div className="bg-gray-50 p-4">
-                  <div className="rounded-xl overflow-hidden border bg-white">
-                    <img
-                      src="/dok.png"
-                      alt="Dok"
-                      className="mx-auto w-auto max-w-full max-h-[70vh] object-contain"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        )}
-      </AnimatePresence>
     </div>
   )
 }
