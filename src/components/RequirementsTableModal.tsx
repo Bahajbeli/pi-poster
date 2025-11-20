@@ -126,7 +126,7 @@ const allRequirementsData: RequirementData[] = [
       'Configuration management, and application deployment across the infrastructure',
     technicalConstraints: [
       { id: 'TC5.1', description: 'Must be open-source' },
-      { id: 'TC5.2', description: 'Must provide provisioning and configuration management' },
+      { id: 'TC5.2', description: 'Must provide configuration management' },
       { id: 'TC5.3', description: 'Must support Windows, Linux, Unix' },
       { id: 'TC5.4', description: 'Must be agentless' },
       { id: 'TC5.5', description: 'Must use simple protocols like SSH' },
